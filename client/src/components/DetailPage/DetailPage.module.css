@@ -1,0 +1,12 @@
+.containerdetail {
+    width: 200%;
+    height: 200%;
+    align-items: center;
+    transition: .5s;
+    display: flex;
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-column-gap: 20px; 
+    margin: 80px;
+} 
