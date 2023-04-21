@@ -11,10 +11,10 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter); 
 router.use('/', Route_Videogames)   
-router.use('/', Route_GenresGames) 
+router.use('/api', Route_GenresGames) 
 router.use('/', Route_PostGames) 
-router.use('/', Route_Videogames)  
-router.use('/', Route_Videogames) 
+// router.use('/', Route_Videogames)  
+// router.use('/', Route_Videogames) 
 
 
 

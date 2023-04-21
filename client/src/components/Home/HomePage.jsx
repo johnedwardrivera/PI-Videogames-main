@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from "react-router-dom";
 import { getGamesByName } from '../../redux/actions/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import CardVideoGame from '../CardVideoGame/CardVideoGame'
@@ -18,8 +19,8 @@ const HomePage = () => {
         setSearchString(event.target.value)
     }
 
-    function handleSubmit(event){ 
-        event.preventDefault() 
+    function handleSubmit(event) {
+        event.preventDefault()
         // console.log("hola nnn", searchString)  
         dispatch(getGamesByName(searchString))
 
@@ -28,9 +29,17 @@ const HomePage = () => {
     return (
         <>
             {/* SearchBar */}
-            <div className={style.searchbox} >
-                <input type="search" value={name} onChange={handleChange} placeholder='Enter a videogame...' />
-                <button type='submit' onClick={handleSubmit}>buscar</button>
+            <div className={style.grid}>
+                <div className={style.searchbox} >
+                    <input className={style.input} type="search" value={name} onChange={handleChange} placeholder='Enter a videogame...' />
+                    <button className={style.btn} type='submit' onClick={handleSubmit}>buscar</button>
+                </div>
+
+                <div>
+                    <Link to='/create'>
+                        <button className={style.boton}>Create a new videogame</button>
+                    </Link>
+                </div>
             </div>
 
             <div>

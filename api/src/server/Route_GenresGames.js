@@ -1,11 +1,10 @@
 const { Router } = require('express');
-
 const getGenresGames = require('../controllers/getGenresGames')
 
 const router = Router();
 
 // end-points
-router.get('/Genre', async (req, res) => {
+router.get('/genres', async (req, res) => {
     try {
         const results = await getGenresGames()
         res.json(results)

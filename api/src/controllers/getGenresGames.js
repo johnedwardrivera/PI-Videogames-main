@@ -6,9 +6,9 @@ const { API_KEY } = process.env
 const getGenresGames = async () => {
     try {
         let genresApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`) 
-        // console.log('soy el genero' ,genresApi)
+        console.log('soy el genero' ,genresApi.data.results)
         genresApi.data.results.forEach(e => {
-            Genre.bulkCreate({
+            Genre.findOrCreate({
                 where: { name: e.name }
 
             })
@@ -22,8 +22,6 @@ const getGenresGames = async () => {
         return error.message
 
     }
-
-
 }
 
 module.exports = getGenresGames

@@ -1,8 +1,10 @@
-import { GET_VIDEOGAME, GET_DETAIL_VIDEOGAME, GET_BY_NAME } from '../action-types/action-types'
+import { GET_VIDEOGAME, GET_DETAIL_VIDEOGAME, GET_BY_NAME, POST_VIDEOGAME, GET_GENRES } from '../action-types/action-types'
 
 const initialState = {
     getVideoGame: [],
-    getDetailGame: [],  
+    getDetailGame: [],
+    postVideoGameCreate: "",
+    getAllGenres: []
 
 }
 
@@ -11,7 +13,7 @@ const reducer = (state = initialState, action) => {
         case GET_VIDEOGAME:
             return {
                 ...state,
-                getVideoGame: action.payload, 
+                getVideoGame: action.payload,
                 videogame: action.payload
 
             }
@@ -24,6 +26,16 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 getVideoGame: action.payload
+            }
+        case POST_VIDEOGAME:
+            return {
+                ...state,
+                postVideoGameCreate: action.payload
+            }
+        case GET_GENRES:
+            return {
+                ...state,
+                getAllGenres: action.payload
             }
         default:
             return { ...state }

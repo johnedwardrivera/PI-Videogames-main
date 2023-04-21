@@ -1,3 +1,5 @@
 export const GET_VIDEOGAME = 'GET_VIDEOGAME' 
 export const GET_DETAIL_VIDEOGAME = 'GET_DETAIL_VIDEOGAME'  
-export const GET_BY_NAME = 'GET_BY_NAME'
+export const GET_BY_NAME = 'GET_BY_NAME' 
+export const POST_VIDEOGAME = 'POST_VIDEOGAME'
+export const GET_GENRES = 'GET_GENRES'
