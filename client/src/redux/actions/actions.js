@@ -30,9 +30,9 @@ export const getGamesByName = (name) => {
 }
 export const postvideogame = (objGame) => {
     return async (dispatch) => {
-        const response = await axios(`http://localhost:3001/videogames`, { params: { objGame } })
+        const response = await axios.post(`http://localhost:3001/videogames`,{ body: objGame })
         if (response.data) {
-            response.data = 'the videogame already exists'
+            response.data = 'created successfully'
         }
         return dispatch({
             type: POST_VIDEOGAME,
