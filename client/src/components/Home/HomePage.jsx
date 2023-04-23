@@ -1,19 +1,27 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom";
 import { getGamesByName } from '../../redux/actions/actions'
-import { useDispatch, useSelector } from 'react-redux'
+import { getGenres } from '../../redux/actions/actions' 
+import { filtergenres } from '../../redux/actions/actions'
+import { useDispatch, useSelector } from 'react-redux' 
+import { getVideogames } from '../../redux/actions/actions'
 import CardVideoGame from '../CardVideoGame/CardVideoGame'
+import { React, useEffect } from 'react'
 import style from './Home.module.css'
 
 const HomePage = () => {
     const dispatch = useDispatch()
     const name = useSelector(state => state.name)
-    const [searchString, setSearchString] = useState('')
+    const genres = useSelector((state) => state.getAllGenres)  
+    const filter = useSelector((state) => state.getVideoGame) 
+    console.log("filteeeeeeerrrrr",filter)
+   
 
-    // function handleChange(e) { 
-    //     e.preventDefault() 
-    //     setSearchString(e.target.value) 
-    // } 
+    const [searchString, setSearchString] = useState('')
+    useEffect(() => {
+        dispatch(getGenres())
+    }, [])
+
     function handleChange(event) {
         // dispatch(getGamesByName(event.target.values))
         setSearchString(event.target.value)
@@ -24,7 +32,13 @@ const HomePage = () => {
         // console.log("hola nnn", searchString)  
         dispatch(getGamesByName(searchString))
 
+    } 
+    function handleChangeSelect(event){  
+        dispatch(filtergenres(event.target.value)) 
+    
     }
+
+
 
     return (
         <>
@@ -40,7 +54,18 @@ const HomePage = () => {
                         <button className={style.boton}>Create a new videogame</button>
                     </Link>
                 </div>
+
+                {/* filtrado por genero */}
+
+                <select name="genre" onChange={handleChangeSelect} >
+                    {genres?.map((gen) => (
+                        <option value={gen.name}>{gen.name}</option>
+                    ))}
+                </select>
             </div>
+
+
+
 
             <div>
                 <CardVideoGame />

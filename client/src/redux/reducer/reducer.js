@@ -1,4 +1,4 @@
-import { GET_VIDEOGAME, GET_DETAIL_VIDEOGAME, GET_BY_NAME, POST_VIDEOGAME, GET_GENRES } from '../action-types/action-types'
+import { GET_VIDEOGAME, GET_DETAIL_VIDEOGAME, GET_BY_NAME, POST_VIDEOGAME, GET_GENRES, FILTER_GENRES } from '../action-types/action-types'
 
 const initialState = {
     getVideoGame: [],
@@ -36,6 +36,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 getAllGenres: action.payload
+            }
+        case FILTER_GENRES:
+            return {
+                ...state,
+                getVideoGame: action.payload
             }
         default:
             return { ...state }

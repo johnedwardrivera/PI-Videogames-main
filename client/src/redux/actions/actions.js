@@ -1,4 +1,4 @@
-import { GET_VIDEOGAME, GET_DETAIL_VIDEOGAME, GET_BY_NAME, POST_VIDEOGAME, GET_GENRES } from '../action-types/action-types'
+import { GET_VIDEOGAME, GET_DETAIL_VIDEOGAME, GET_BY_NAME, POST_VIDEOGAME, GET_GENRES, FILTER_GENRES  } from '../action-types/action-types'
 import axios from 'axios';
 
 export const getVideogames = (page = 1) => {
@@ -45,6 +45,15 @@ export const getGenres = () => {
         const response = await axios(`http://localhost:3001/api/genres`)
         return dispatch({
             type: GET_GENRES,
+            payload: response.data
+        })
+    }
+} 
+export const filtergenres = (genrename) => { 
+    return async (dispatch) => { 
+        const response = await axios('http://localhost:3001/api/filter/genres', {params: {genrename}}) 
+        return dispatch({ 
+            type: FILTER_GENRES, 
             payload: response.data
         })
     }
