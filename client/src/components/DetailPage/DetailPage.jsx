@@ -10,7 +10,7 @@ const DetailPage = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
     const gameDetail = useSelector((state) => state.getDetailGame)
-    console.log("holaaa", gameDetail.platforms)
+    console.log("holaaa detalle", gameDetail.platforms)
 
     useEffect(() => {
         dispatch(getDetailVideogame(id))
@@ -20,27 +20,30 @@ const DetailPage = () => {
         <>
             <div className={style.containerdetail}>
                 {
-                    gameDetail.image != undefined ?
-                        <GamePageDatail
-                            key={gameDetail?.index}
-                            background_image={gameDetail?.image}
-                            id={gameDetail?.id}
-                            name={gameDetail?.name}
-                            genres={gameDetail?.genres}
-                            platforms={gameDetail.platforms}
-                            released={gameDetail?.released}
-                            rating={gameDetail?.rating}
-                            description={gameDetail?.description_raw}
 
-                        />
+                    gameDetail.image != undefined ?
+                        
+                            
+                                < GamePageDatail
+                                    // key={index?.index}
+                                    background_image={gameDetail?.image}
+                                    id={gameDetail?.id}
+                                    name={gameDetail?.name}
+                                    genres={gameDetail?.genres}
+                                    platforms={gameDetail?.platforms}
+                                    released={gameDetail?.released}
+                                    rating={gameDetail?.rating}
+                                    description={gameDetail?.description_raw}
+                                />
+
                         :
                         <GamePageDatail
                             key={gameDetail?.index}
                             background_image={gameDetail?.background_image}
                             id={gameDetail?.id}
                             name={gameDetail?.name}
-                             genres={gameDetail?.genres}
-                             platforms={gameDetail?.platforms}
+                            genres={gameDetail?.genres}
+                            platforms={gameDetail?.platforms}
                             released={gameDetail?.released}
                             rating={gameDetail?.rating}
                             description={gameDetail?.description_raw}

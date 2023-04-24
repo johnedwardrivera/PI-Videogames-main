@@ -36,7 +36,7 @@ const VideogameIdDb = async (id) => {
 
         // preguntamos se existe la id en la base de datos  
         if (gameDb) {
-            return [{
+            return {
                 id: gameDb.id,
                 name: gameDb.name,
                 description: gameDb.description,
@@ -45,7 +45,7 @@ const VideogameIdDb = async (id) => {
                 released: gameDb.released,
                 rating: gameDb.rating,
                 genres: gameDb.genres.map(el => el.name)
-            }]
+            }
         }
         return "the videoGame with the id was not found";
 

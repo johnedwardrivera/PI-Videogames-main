@@ -17,10 +17,12 @@ const CardVideoGame = () => {
         // pages();
     }, [])
 
-    function pages(params = 1) {
+
+    function pages(params = 1, value = 'normal') {
         dispatch(getVideogames(params))
         console.log("todos los juegos", params)
     }
+
 
     return (
         <>

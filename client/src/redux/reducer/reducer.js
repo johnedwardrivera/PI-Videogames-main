@@ -1,10 +1,10 @@
-import { GET_VIDEOGAME, GET_DETAIL_VIDEOGAME, GET_BY_NAME, POST_VIDEOGAME, GET_GENRES, FILTER_GENRES } from '../action-types/action-types'
+import { GET_VIDEOGAME, GET_DETAIL_VIDEOGAME, GET_BY_NAME, POST_VIDEOGAME, GET_GENRES, FILTER_GENRES, ORDER } from '../action-types/action-types'
 
 const initialState = {
     getVideoGame: [],
     getDetailGame: [],
     postVideoGameCreate: "",
-    getAllGenres: []
+    getAllGenres: [],
 
 }
 
@@ -42,6 +42,21 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 getVideoGame: action.payload
             }
+        case ORDER:
+            let copygetVideoGame = [...state.getVideoGame]
+            if (action.payload == "Ascendente") {
+                copygetVideoGame.sort()
+            }
+            if (action.payload == "Descendente") {
+                copygetVideoGame.sort().reverse()
+            }
+
+            return {
+                ...state,
+                getVideoGame: copygetVideoGame
+
+            }
+
         default:
             return { ...state }
     }
