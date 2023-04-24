@@ -1,4 +1,4 @@
-import { GET_VIDEOGAME, GET_DETAIL_VIDEOGAME, GET_BY_NAME, POST_VIDEOGAME, GET_GENRES, FILTER_GENRES, ORDER } from '../action-types/action-types'
+import { GET_VIDEOGAME, GET_DETAIL_VIDEOGAME, GET_BY_NAME, POST_VIDEOGAME, GET_GENRES, FILTER_GENRES, ORDER, ORDER_RATING } from '../action-types/action-types'
 import axios from 'axios';
 
 export const getVideogames = (page = 1) => {
@@ -73,6 +73,9 @@ export const filtergenres = (genrename) => {
         })
     }
 }
-export const orderCards = (id) => { 
-    return{ type: ORDER, payload: id }
+export const orderCards = (payload) => { 
+    return{ type: ORDER, payload }
+} 
+export const ordenRating = (payload) => { 
+    return{ type: ORDER_RATING, payload }
 }

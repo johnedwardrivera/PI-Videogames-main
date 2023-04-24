@@ -1,10 +1,11 @@
-import { GET_VIDEOGAME, GET_DETAIL_VIDEOGAME, GET_BY_NAME, POST_VIDEOGAME, GET_GENRES, FILTER_GENRES, ORDER } from '../action-types/action-types'
+import { GET_VIDEOGAME, GET_DETAIL_VIDEOGAME, GET_BY_NAME, POST_VIDEOGAME, GET_GENRES, FILTER_GENRES, ORDER, ORDER_RATING  } from '../action-types/action-types'
 
 const initialState = {
     getVideoGame: [],
     getDetailGame: [],
     postVideoGameCreate: "",
-    getAllGenres: [],
+    getAllGenres: [], 
+    videogame:[]
 
 }
 
@@ -43,19 +44,31 @@ const reducer = (state = initialState, action) => {
                 getVideoGame: action.payload
             }
         case ORDER:
-            let copygetVideoGame = [...state.getVideoGame]
-            if (action.payload == "Ascendente") {
-                copygetVideoGame.sort()
+            let orderAsc = state.getVideoGame.slice().sort((a,b) => { 
+                let videogameA = a.name.toLowerCase() 
+                let videogameB = b.name.toLowerCase() 
+                if(videogameA > videogameB) return 1 
+                if(videogameB > videogameA) return -1 
+                return 0   
+            })  
+            const allvideogames3 = state.videogame 
+            const orderName = action.payload == 'asc' ? orderAsc : orderAsc.reverse()  
+            return{ 
+                ...state,  
+                getVideoGame : action.payload == '' ? allvideogames3: orderName         
             }
-            if (action.payload == "Descendente") {
-                copygetVideoGame.sort().reverse()
-            }
-
-            return {
-                ...state,
-                getVideoGame: copygetVideoGame
-
-            }
+        case ORDER_RATING: 
+          let orderRatingAsc = state.getVideoGame.slice().sort((a, b) => { 
+            if(Number(a.rating) > Number(b.rating)) return 1 
+            if(Number(b.rating) > Number(a.rating)) return -1 
+            return 0
+        
+        }) 
+        return { 
+            ...state, 
+            getVideoGame: action.payload == 'asc' ? orderRatingAsc : orderRatingAsc.reverse()
+        
+        }
 
         default:
             return { ...state }

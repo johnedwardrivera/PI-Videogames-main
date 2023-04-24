@@ -5,6 +5,7 @@ import { getGenres } from '../../redux/actions/actions'
 import { filtergenres } from '../../redux/actions/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { orderCards } from '../../redux/actions/actions'
+import { ordenRating } from '../../redux/actions/actions'
 import { getVideogames } from '../../redux/actions/actions'
 import CardVideoGame from '../CardVideoGame/CardVideoGame'
 import { React, useEffect } from 'react'
@@ -36,12 +37,19 @@ const HomePage = () => {
         dispatch(getGamesByName(searchString))
 
     }
+    //filtrar por genero 
     function handleChangeSelect(event) {
         dispatch(filtergenres(event.target.value))
 
     }
+    // ordernar Ascendente y Descendente
     function handlechangeorder(event) {
         dispatch(orderCards(event.target.value))
+
+    }
+    // ordenar rating 
+    function handleChangeRating(event) {
+        dispatch(ordenRating(event.target.value))
 
     }
 
@@ -73,9 +81,17 @@ const HomePage = () => {
                 {/* ordenado */}
                 <div>
                     <select onChange={handlechangeorder}>
-                        <option value='Ascendente'>Ascendente (A-Z)</option>
-                        <option value='Descendente'>Descendent (Z-A)</option>
+                        <option value='asc'>(A - Z)</option>
+                        <option value='desc'>(Z - A)</option>
                     </select>
+
+                </div>
+                <div>
+                    <select onChange={handleChangeRating}>
+                        <option value='asc'>Ascending</option>
+                        <option value='desc'>Descending</option>
+                    </select>
+
 
                 </div>
 
