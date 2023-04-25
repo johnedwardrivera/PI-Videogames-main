@@ -11,7 +11,8 @@ const GamePageDatail = ({ id, key, name, genres, background_image, platforms, re
             {/* <p>{platforms}</p> */}
              <p>{released}</p>
              <p>{rating}</p>
-             <p>{description}</p> 
+             <p>{description}</p>  
+             <Link to={'/homepage'}><button className={style.btn}>Homepage</button></Link>
         </div>
     )
 }

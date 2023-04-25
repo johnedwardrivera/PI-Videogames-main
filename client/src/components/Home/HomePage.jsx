@@ -71,7 +71,7 @@ const HomePage = () => {
                 {/* filtrado por genero */}
                 <div>
 
-                    <select name="genre" onChange={handleChangeSelect} >
+                    <select className={style.select} name="genre" onChange={handleChangeSelect} >
                         {genres?.map((gen) => (
                             <option value={gen.name}>{gen.name}</option>
                         ))}
@@ -80,14 +80,14 @@ const HomePage = () => {
 
                 {/* ordenado */}
                 <div>
-                    <select onChange={handlechangeorder}>
+                    <select className={style.select} onChange={handlechangeorder}>
                         <option value='asc'>(A - Z)</option>
                         <option value='desc'>(Z - A)</option>
                     </select>
 
                 </div>
                 <div>
-                    <select onChange={handleChangeRating}>
+                    <select className={style.select} onChange={handleChangeRating}>
                         <option value='asc'>Ascending</option>
                         <option value='desc'>Descending</option>
                     </select>

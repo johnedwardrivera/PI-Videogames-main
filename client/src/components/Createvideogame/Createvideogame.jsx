@@ -1,4 +1,5 @@
-import style from './Createvideogame.module.css'
+import style from './Createvideogame.module.css' 
+import { Link } from 'react-router-dom'
 // import { useHistory } from "react-router-dom" 
 import validate from './validation'
 import { useState } from 'react'
@@ -83,8 +84,8 @@ const Createvideogame = () => {
 
     return (
         <>
-            <div>
-                <form onSubmit={(e) => submitHandler(e)}>
+            <div className={style.container}>
+                <form className={style.formulario}  onSubmit={(e) => submitHandler(e)}>
                     <div>
                         <label htmlFor="name" >Name: </label>
                         <input
@@ -92,7 +93,8 @@ const Createvideogame = () => {
                             value={input.name}
                             onChange={(e) => changeHandler(e)}
                             name='name'
-                            placeholder='name'
+                            placeholder='name' 
+                            className={style.input}
                         />
                         {errors.name && <p style={{ color: "red" }}> {errors?.name}</p>}
                     </div>
@@ -106,7 +108,8 @@ const Createvideogame = () => {
                             value={input.description}
                             onChange={(e) => changeHandler(e)}
                             name='description'
-                            placeholder='description'
+                            placeholder='description' 
+                            className={style.input}
                         />
                         {errors.description && <p style={{ color: "red" }}>{errors?.description}</p>}
                     </div>
@@ -120,7 +123,8 @@ const Createvideogame = () => {
                             value={input.platforms}
                             onChange={(e) => changeHandler(e)}
                             name='platforms'
-                            placeholder='platforms'
+                            placeholder='platforms' 
+                            className={style.input}
                         />
                         {errors.platforms && <p style={{ color: "red" }}>{errors?.platforms}</p>}
                     </div>
@@ -133,7 +137,8 @@ const Createvideogame = () => {
                             value={input.image}
                             onChange={(e) => changeHandler(e)}
                             name='image'
-                            placeholder='Add url'
+                            placeholder='Add url' 
+                            className={style.input}
                         />
                         {errors.image && <p style={{ color: "red" }}>{errors?.image}</p>}
                     </div>
@@ -145,7 +150,8 @@ const Createvideogame = () => {
                         value={input.released}
                         onChange={(e) => changeHandler(e)}
                         name='released'
-                        placeholder='released'
+                        placeholder='released' 
+                        className={style.input}
                     />
                     {errors.released && <p style={{ color: "red" }}>{errors?.released}</p>}
                     <div>
@@ -157,7 +163,8 @@ const Createvideogame = () => {
                             value={input.rating}
                             onChange={(e) => changeHandler(e)}
                             name='rating'
-                            placeholder='rating'
+                            placeholder='rating' 
+                            className={style.input}
 
                         />
                         {errors.rating && <p style={{ color: "red" }}>{errors?.rating}</p>}
@@ -167,7 +174,7 @@ const Createvideogame = () => {
                     <div>
                         <label htmlFor='genres' >Genres: </label>
                         {genres?.map((gen) => (
-                            <button
+                            <button className={style.bonton}
                                 value={gen.name}
                                 key={gen.name}
                                 onClick={(e) => selectGenreHandler(e)}
@@ -182,11 +189,11 @@ const Createvideogame = () => {
                     </div>
                     <div>
                         <h4>Preview</h4>
-                        <h3>Name: {input.name}</h3>
-                        <h4>Description:{input.description}</h4>
-                        <p>Platforms:{input.platforms}</p>
-                        <p>Released:{input.released}</p>
-                        <p>Rating:{input.rating}</p>
+                        <h3 >Name: {input.name}</h3>
+                        <h4>Description: {input.description}</h4>
+                        <p>Platforms: {input.platforms}</p>
+                        <p>Released: {input.released}</p>
+                        <p>Rating: {input.rating}</p>
                         <p>Genres:</p>
                         {input.genres.map((gen) =>
                             <button style={{ width: '80px', height: '19px' }}
@@ -199,8 +206,9 @@ const Createvideogame = () => {
                         )}
 
                     </div>
-                    <button type='submit'>submit</button>
-                </form>
+                    <button className={style.create} type='submit'>Create</button>
+                </form> 
+                <Link to={'/homepage'}><button className={style.btn}>Homepage</button></Link>
             </div>
         </>
     )
