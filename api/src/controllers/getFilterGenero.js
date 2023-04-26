@@ -1,12 +1,15 @@
 const axios = require('axios'); 
 const { API_KEY } = process.env 
-const { Videogame, Genre } = require('../db') 
+const { Videogame, Genre } = require('../db')  
+const {  getGamesDb } = require('./getVideogames')
 
 
 
 const getFilterGenero = async (genrename) => { 
    
-      try {
+      try { 
+        let videogames = await  getGamesDb() 
+       
         let filtergenres = []
        
         for (let i = 1; i < 6; i++) {  
@@ -31,11 +34,14 @@ const getFilterGenero = async (genrename) => {
         })) 
         let allGames= [] 
 
-        filtergenres.map(el => {allGames = allGames.concat(el)}) 
-
+        filtergenres.map(el => {allGames = allGames.concat(el)})  
+        videogames.map(el => {allGames = allGames.concat(el)}) 
+        console.log("videogames todos", allGames)
      all = allGames.filter((e) => e.genres == genrename) 
      console.log("llegue a genrename",genrename)
      return all
+     
+
 
       } catch (error) {
         return [{ error: error}]

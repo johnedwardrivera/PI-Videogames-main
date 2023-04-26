@@ -1,12 +1,16 @@
+.navbar_container{
+    background-color: #a9a9a977 ;
+    /* opacity: 0.6; */
+}
+
 .grid { 
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
-    background-color: darkgray;
-    opacity: 0.6;
+    /* opacity: 1 !important; */
     grid-template-areas: "a b c d d e";  
-    
+    padding-top: 30px;
     
 } 
 .input{ 

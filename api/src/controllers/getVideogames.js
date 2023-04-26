@@ -62,4 +62,7 @@ const getGamesApi = async (req) => {
 
 
 
-module.exports = getVideogames
+module.exports = {
+    getVideogames, 
+    getGamesDb
+}

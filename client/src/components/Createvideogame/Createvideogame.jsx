@@ -188,20 +188,14 @@ const Createvideogame = () => {
                          {errors.genres && <p style={{ color: "red" }}>{errors?.genres}</p>}
                     </div>
                     <div>
-                        <h4>Preview</h4>
-                        <h3 >Name: {input.name}</h3>
-                        <h4>Description: {input.description}</h4>
-                        <p>Platforms: {input.platforms}</p>
-                        <p>Released: {input.released}</p>
-                        <p>Rating: {input.rating}</p>
-                        <p>Genres:</p>
+                        <p>Generos Escogidos:</p>
                         {input.genres.map((gen) =>
                             <button style={{ width: '80px', height: '19px' }}
                                 key={gen}
                                 onClick={() => deleteHandlerGenre(gen)}
                                 name="genres"
                             >
-
+                                    {gen}
                             </button>
                         )}
 

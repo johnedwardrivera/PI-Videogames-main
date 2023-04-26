@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const getVideogames = require('../controllers/getVideogames') 
+const { getVideogames} = require('../controllers/getVideogames') 
 const getVideogamesId = require('../controllers/getVideogamesId') 
 const getvideogamesname = require('../controllers/getvideogamesname')
 
@@ -37,19 +37,20 @@ router.get('/', async(req, res) => {
   
     try { 
         const { resultNameApi , resultNameDb} = await getvideogamesname(name)  
-        if(resultNameDb){ 
+
+        if(resultNameApi && resultNameDb){
             res.json(resultNameApi.concat(resultNameDb))
-        }else{ 
+        } else if(resultNameDb){ 
+            res.json(resultNameDb)
+        }else if(resultNameApi) { 
             res.json(resultNameApi)
         
         } 
-        
         
     } catch (error) { 
         res.status(401).json(error.message)
         
     }
-  
 
 })
 

@@ -56,45 +56,47 @@ const HomePage = () => {
     return (
         <>
             {/* SearchBar */}
-            <div className={style.grid}>
-                <div className={style.searchbox} >
-                    <input className={style.input} type="search" value={name} onChange={handleChange} placeholder='Enter a videogame...' />
-                    <button className={style.btn} type='submit' onClick={handleSubmit}>buscar</button>
+            <div className={style.navbar_container}>
+                <div className={style.grid}>
+                    <div className={style.searchbox} >
+                        <input className={style.input} type="search" value={name} onChange={handleChange} placeholder='Enter a videogame...' />
+                        <button className={style.btn} type='submit' onClick={handleSubmit}>buscar</button>
+                    </div>
+
+                    <div>
+                        <Link to='/create'>
+                            <button className={style.boton}>Create a new videogame</button>
+                        </Link>
+                    </div>
+
+                    {/* filtrado por genero */}
+                    <div>
+
+                        <select className={style.select} name="genre" onChange={handleChangeSelect} >
+                            {genres?.map((gen) => (
+                                <option value={gen.name}>{gen.name}</option>
+                            ))}
+                        </select>
+                    </div>
+
+                    {/* ordenado */}
+                    <div>
+                        <select className={style.select} onChange={handlechangeorder}>
+                            <option value='asc'>(A - Z)</option>
+                            <option value='desc'>(Z - A)</option>
+                        </select>
+
+                    </div>
+                    <div>
+                        <select className={style.select} onChange={handleChangeRating}>
+                            <option value='asc'>Ascending</option>
+                            <option value='desc'>Descending</option>
+                        </select>
+
+
+                    </div>
+
                 </div>
-
-                <div>
-                    <Link to='/create'>
-                        <button className={style.boton}>Create a new videogame</button>
-                    </Link>
-                </div>
-
-                {/* filtrado por genero */}
-                <div>
-
-                    <select className={style.select} name="genre" onChange={handleChangeSelect} >
-                        {genres?.map((gen) => (
-                            <option value={gen.name}>{gen.name}</option>
-                        ))}
-                    </select>
-                </div>
-
-                {/* ordenado */}
-                <div>
-                    <select className={style.select} onChange={handlechangeorder}>
-                        <option value='asc'>(A - Z)</option>
-                        <option value='desc'>(Z - A)</option>
-                    </select>
-
-                </div>
-                <div>
-                    <select className={style.select} onChange={handleChangeRating}>
-                        <option value='asc'>Ascending</option>
-                        <option value='desc'>Descending</option>
-                    </select>
-
-
-                </div>
-
             </div>
 
             <div>
